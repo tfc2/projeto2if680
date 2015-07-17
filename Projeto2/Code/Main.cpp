@@ -418,7 +418,8 @@ void Model_OBJ::Draw()
 using namespace cv;
 
 cv::VideoCapture cap;
-Mat frame;
+cv::VideoCapture cap2;
+Mat frame, frameGlut;
 
 Model_OBJ obj;
 
@@ -451,6 +452,7 @@ void surf()
 		Mat img_scene(100, 250, CV_8UC1, Scalar(0));
 
 		bool bSuccess = cap.read(img_scene); // le os frames do video
+		(cap2) >> frameGlut;
 
 		if (!bSuccess) // caso nao tenha lido, da um break
 		{
@@ -486,15 +488,13 @@ void surf()
 
 		double max_dist = 0; double min_dist = 100;
 
-		// Calcula as distancias maximas e minimasentre os pontos
+		// Calcula as distancias maximas e minimas entre os pontos
 		for (int i = 0; i < descriptors_object.rows; i++)
 		{
 			double dist = matches[i].distance;
 			if (dist < min_dist) min_dist = dist;
 			if (dist > max_dist) max_dist = dist;
 		}
-
-		printFPS();
 
 		//-- Desenha apenas bons matches (distancia menor que 2*min_dist)
 		std::vector< DMatch > good_matches;
@@ -540,9 +540,11 @@ void surf()
 		line(img_matches, scene_corners[3] + Point2f(img_object.cols, 0), scene_corners[0] + Point2f(img_object.cols, 0), Scalar(0, 255, 0), 4);
 
 		//-- Exibe os matches
-		imshow("Good Matches & Object detection", img_matches);
-
+		imshow("Deteccao do objeto", img_matches);
+		
 		waitKey(2);
+
+		printFPS();
 	}
 }
 
@@ -574,12 +576,13 @@ void mydisplay(){
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, luzEspecular);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	cv::Mat tempimage;
+	cv::flip(frameGlut, tempimage, 0);
+	glDrawPixels(tempimage.size().width, tempimage.size().height, GL_BGR_EXT, GL_UNSIGNED_BYTE, tempimage.ptr());
 	glLoadIdentity();
 	gluLookAt(0, 20, 30, 0, 0, 0, 0, 1, 0);
 
-
 	obj.Draw();
-
 
 	glutSwapBuffers();
 
@@ -664,9 +667,13 @@ void initialize()
 	// Habilita o depth-buffering
 	glEnable(GL_DEPTH_TEST);
 
-	glutSolidTeapot(5.0);
-
 	angle = 45;
+}
+
+void idle()
+{
+		// grab a frame from the camera
+		(cap2) >> frameGlut;
 }
 
 int main(int argc, char** argv)
@@ -674,6 +681,14 @@ int main(int argc, char** argv)
 
 	cap.open("Resources\\InputData\\video.MOV");
 	if (!cap.isOpened())
+	{
+		cout << "error, could not open the capture" << endl;
+		system("pause");
+		exit(1);
+	}
+
+	cap2.open("Resources\\InputData\\video.MOV");
+	if (!cap2.isOpened())
 	{
 		cout << "error, could not open the capture" << endl;
 		system("pause");
@@ -690,11 +705,12 @@ int main(int argc, char** argv)
 	glViewport(0, 200, 400, 200);
 	glutInitWindowSize(800, 600);
 	glutInitWindowPosition(0, 400);
-	glutCreateWindow("Projeto 2");
+	glutCreateWindow("Modelo 3D");
 	glutDisplayFunc(mydisplay);
 	glutReshapeFunc(myreshape);
 	initialize();
 	obj.Load("dog.obj");
+	glutIdleFunc(idle);
 	glutMainLoop();
 
 	return 0;
