@@ -1,0 +1,24 @@
+﻿Build started 16/07/2015 17:34:36.
+     1>Project "C:\Users\tfc2\Downloads\Lista2\Projeto Base PG - OpenGL.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(356,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(357,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\tfc2\Downloads\Lista2\Dependencies\OpenCV\include\ /IC:\Users\tfc2\Downloads\Lista2\Dependencies\OpenGL\Include\ /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\tfc2\Downloads\Lista2\Intermediary\Debug\\" /Fd"C:\Users\tfc2\Downloads\Lista2\Intermediary\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Code\Main.cpp
+         Main.cpp
+     1>c:\users\tfc2\downloads\lista2\code\main.cpp(178): warning C4172: returning address of local variable or temporary
+     1>c:\users\tfc2\downloads\lista2\code\main.cpp(209): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(304) : see declaration of 'sscanf'
+     1>c:\users\tfc2\downloads\lista2\code\main.cpp(224): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(304) : see declaration of 'sscanf'
+     1>c:\users\tfc2\downloads\lista2\code\main.cpp(660): warning C4018: '<' : signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\tfc2\Downloads\Lista2\Output\Debug\Projeto 2  - Resp.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\tfc2\Downloads\Lista2\Dependencies\OpenCV\x86\vc12\lib /LIBPATH:C:\Users\tfc2\Downloads\Lista2\Dependencies\OpenGL\Lib\ opencv_calib3d2410d.lib opencv_contrib2410d.lib opencv_core2410d.lib opencv_features2d2410d.lib opencv_flann2410d.lib opencv_gpu2410d.lib opencv_highgui2410d.lib opencv_imgproc2410d.lib opencv_legacy2410d.lib opencv_ml2410d.lib opencv_nonfree2410d.lib opencv_objdetect2410d.lib opencv_ocl2410d.lib opencv_photo2410d.lib opencv_stitching2410d.lib opencv_superres2410d.lib opencv_ts2410d.lib opencv_video2410d.lib opencv_videostab2410d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\tfc2\Downloads\Lista2\Output\Debug\Projeto 2  - Resp.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\tfc2\Downloads\Lista2\Output\Debug\Projeto 2  - Resp.lib" /MACHINE:X86 C:\Users\tfc2\Downloads\Lista2\Intermediary\Debug\Defs.obj
+         C:\Users\tfc2\Downloads\Lista2\Intermediary\Debug\Main.obj
+         C:\Users\tfc2\Downloads\Lista2\Intermediary\Debug\Point.obj
+         C:\Users\tfc2\Downloads\Lista2\Intermediary\Debug\util.obj
+         Projeto Base PG - OpenGL.vcxproj -> C:\Users\tfc2\Downloads\Lista2\Output\Debug\Projeto 2  - Resp.exe
+     1>Done Building Project "C:\Users\tfc2\Downloads\Lista2\Projeto Base PG - OpenGL.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.67
